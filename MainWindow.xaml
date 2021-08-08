@@ -9,7 +9,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -35,11 +35,11 @@
         </ListBox>
         
         <!--Toolbar-->
-        <WrapPanel>
+        <WrapPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
             <Button>Create</Button>
             <Button>Delete</Button>
         </WrapPanel>
-        <WrapPanel Grid.Column="1" HorizontalAlignment="Right">
+        <WrapPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
             <Button>Edit</Button>
             <Button>Save</Button>
         </WrapPanel>

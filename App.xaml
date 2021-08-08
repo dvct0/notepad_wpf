@@ -4,6 +4,23 @@
              xmlns:local="clr-namespace:notepad_wpf"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Width" Value="90"/>
+            <Setter Property="Height" Value="30"/>
+            
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
+                            <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="Gray" RadiusX="2" RadiusY="2" StrokeThickness="2" Fill="Transparent"/>
+                            <Rectangle x:Name="innerRectangle" Margin="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="Gray" RadiusX="2" RadiusY="2" StrokeThickness="2" Fill="Transparent"/>
+                            <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <ContentPresenter x:Name="myContentPresenterDockPanel" TextBlock.FontSize="16" Content="{TemplateBinding Content}" TextBlock.Foreground="Black"/>
+                            </DockPanel>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>
