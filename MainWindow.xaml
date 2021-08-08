@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:notepad_wpf"
         mc:Ignorable="d"
-        Title="Notepad" Height="450" Width="800">
+        Title="Notepad" Height="450" Width="800" MinHeight="480" MinWidth="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -21,7 +21,7 @@
         <StackPanel x:Name="bckgListOfNotes" Grid.Row="1" Background="#FFFF80"/>
         
         <!--List of notes from work folder-->
-        <ListBox x:Name="listOfNotes" Background="#E8E8E8" Grid.Row="1"  Margin="5" VerticalAlignment="Stretch" Height="{Binding ElementName='bckgListOfNotes', Path='Height'}">
+        <ListBox x:Name="listOfNotes" Background="#E8E8E8" Grid.Row="1"  Margin="5,0,5,5" VerticalAlignment="Stretch" Height="{Binding ElementName='bckgListOfNotes', Path='Height'}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Background="White" Height="20">
@@ -33,5 +33,15 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        
+        <!--Toolbar-->
+        <WrapPanel>
+            <Button>Create</Button>
+            <Button>Delete</Button>
+        </WrapPanel>
+        <WrapPanel Grid.Column="1" HorizontalAlignment="Right">
+            <Button>Edit</Button>
+            <Button>Save</Button>
+        </WrapPanel>
     </Grid>
 </Window>
