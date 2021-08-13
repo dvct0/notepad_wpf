@@ -94,11 +94,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="settings.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="notes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

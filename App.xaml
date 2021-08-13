@@ -27,10 +27,15 @@
                                 <EventTrigger.Actions>
                                     <BeginStoryboard>
                                         <Storyboard>
-                                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="innerRectangle" BeginTime="00:00:00">
+                                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="innerRectangle" BeginTime="00:00:00.1">
                                                 <SplineThicknessKeyFrame KeyTime="00:00:00" Value="3"/>
-                                                <SplineThicknessKeyFrame KeyTime="00:00:00.12" Value="3,6,3,2"/>
-                                                <SplineThicknessKeyFrame KeyTime="00:00:00.2" Value="3"/>
+                                                <SplineThicknessKeyFrame KeyTime="00:00:00.1" Value="3,6,3,2"/>
+                                                <SplineThicknessKeyFrame KeyTime="00:00:00.15" Value="3"/>
+                                            </ThicknessAnimationUsingKeyFrames>
+                                            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="outerRectangle" BeginTime="00:00:00.1">
+                                                <SplineThicknessKeyFrame KeyTime="00:00:00" Value="0"/>
+                                                <SplineThicknessKeyFrame KeyTime="00:00:00.1" Value="0,3,0,0"/>
+                                                <SplineThicknessKeyFrame KeyTime="00:00:00.15" Value="0"/>
                                             </ThicknessAnimationUsingKeyFrames>
                                         </Storyboard>
                                     </BeginStoryboard>
