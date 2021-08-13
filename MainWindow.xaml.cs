@@ -54,7 +54,7 @@ namespace notepad_wpf
         {
             try
             {
-                File.Create(NotesDirectory + "/" + NameForNewNote.Text + ".html");
+                File.Create(NotesDirectory + NameForNewNote.Text + ".html");
             }
             catch
             {
@@ -65,7 +65,15 @@ namespace notepad_wpf
 
         private void Delete (object sender, RoutedEventArgs e)//Delete selected note
         {
+            try
+            {
+                File.Delete(NotesDirectory + listOfNotes.SelectedItem.ToString());
+            }
+            catch
+            {
 
+            }
+            GetNotesList();
         }
 
         private void Edit (object sender, RoutedEventArgs e)//Edit selected note
