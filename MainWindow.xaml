@@ -21,7 +21,7 @@
         <StackPanel x:Name="bckgListOfNotes" Grid.Row="1" Background="#FFFF80"/>
         
         <!--List of notes from work folder-->
-        <ListBox x:Name="listOfNotes" Background="#E8E8E8" Grid.Row="1"  Margin="5,0,5,5" VerticalAlignment="Stretch" Height="{Binding ElementName='bckgListOfNotes', Path='Height'}"/>
+        <ListBox x:Name="listOfNotes" Background="#E8E8E8" Grid.Row="1"  Margin="5,0,5,5" VerticalAlignment="Stretch" Height="{Binding ElementName='bckgListOfNotes', Path='Height'}" SelectionChanged="ViewSelectedNote"/>
 
         <!--Toolbar-->
         <WrapPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
@@ -30,12 +30,11 @@
             
         </WrapPanel>
         <WrapPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
-            <Button Click="Edit">Edit</Button>
+            <Button x:Name="btnEdit" Click="Edit">Edit</Button>
             <Button Margin="5" Click="Save">Save</Button>
         </WrapPanel>
-        <TextBox x:Name="NameForNewNote" FontSize="18" Grid.Column="1" HorizontalAlignment="Left" Width="300" Height="30"/>
+        <TextBox x:Name="NameForNewNote" FontSize="18" Grid.Column="1" HorizontalAlignment="Left" Width="300" Height="30" PreviewTextInput="ValidInputForFileName"/>
 
-        <WebBrowser x:Name="viewNote" Grid.Row="1" Grid.Column="1" Visibility="Hidden"></WebBrowser>
-        <TextBox x:Name="editNote" Grid.Row="1" Grid.Column="1" Visibility="Hidden"></TextBox>
+        <TextBox x:Name="note" AcceptsReturn="True" Grid.Row="1" Grid.Column="1"></TextBox>
     </Grid>
 </Window>

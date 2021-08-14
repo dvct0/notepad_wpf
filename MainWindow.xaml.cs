@@ -43,7 +43,7 @@ namespace notepad_wpf
         {
             Notes.Clear();
             DirectoryInfo dir = new DirectoryInfo(NotesDirectory);
-            FileInfo[] files = dir.GetFiles("*.html");
+            FileInfo[] files = dir.GetFiles("*.txt");
             foreach (var item in files)
             {
                 Notes.Add(item);
@@ -52,38 +52,58 @@ namespace notepad_wpf
 
         private void Create (object sender, RoutedEventArgs e)//Create a new note
         {
-            try
+            if (NameForNewNote.Text != "" && !File.Exists(NotesDirectory + NameForNewNote.Text))
             {
-                File.Create(NotesDirectory + NameForNewNote.Text + ".html");
-            }
-            catch
-            {
-
+                File.Create(NotesDirectory + NameForNewNote.Text + ".txt");
             }
             GetNotesList();
         }
 
         private void Delete (object sender, RoutedEventArgs e)//Delete selected note
         {
-            try
+            if (listOfNotes.SelectedIndex != -1)
             {
-                File.Delete(NotesDirectory + listOfNotes.SelectedItem.ToString());
+                if (File.Exists(NotesDirectory + listOfNotes.SelectedItem.ToString()))
+                {
+                    File.Delete(NotesDirectory + listOfNotes.SelectedItem.ToString());
+                }
             }
-            catch
-            {
-
-            }
+            note.Text = "";
             GetNotesList();
         }
 
         private void Edit (object sender, RoutedEventArgs e)//Edit selected note
         {
-
+            if (listOfNotes.SelectedIndex != -1)
+            {
+                note.IsReadOnly = false;
+            }
         }
 
         private void Save (object sender, RoutedEventArgs e)//Save selected note
         {
+            if (listOfNotes.SelectedIndex != -1)
+            {
+                if (File.Exists(NotesDirectory + listOfNotes.SelectedItem.ToString()))
+                {
+                    File.WriteAllText(NotesDirectory + listOfNotes.SelectedItem.ToString(), note.Text);
+                    note.IsReadOnly = true;
+                }
+            }
+        }
 
+        private void ViewSelectedNote (object sender, SelectionChangedEventArgs e)//show note
+        {
+            note.IsReadOnly = true;
+            if (listOfNotes.SelectedIndex != -1)
+            {
+                note.Text = File.ReadAllText(NotesDirectory + listOfNotes.SelectedItem.ToString());
+            }
+        }
+
+        private void ValidInputForFileName (object sender, System.Windows.Input.TextCompositionEventArgs e)//check file name
+        {
+            e.Handled = !("<>:\"/\\|?*".IndexOf(e.Text) < 0);
         }
     }
 }
